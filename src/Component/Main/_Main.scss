@@ -1,0 +1,19 @@
+@use "../Mixin/Mixin" as m;
+
+main{
+   
+   
+    @include m.flex($justify: center, $align: center, $direction: column);
+    ul{
+      
+        li{
+            list-style-type: none;
+          
+            input{
+                width: 1em;
+            }
+        }
+    }
+   
+}
+

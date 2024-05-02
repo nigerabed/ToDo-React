@@ -1,0 +1,31 @@
+@use "../Mixin/Mixin" as m;
+
+.newTaskForm {
+
+    padding: 20px 20px;
+    border-radius: .5em;
+
+    background-color: #e4f3f5;
+    box-shadow: 10px 10px 10px #c0bfbf;
+
+    @include m.flex($justify: center, $align: center, $direction: column);
+
+
+    input {
+        display: block;
+        margin-bottom: 1em;
+    }
+
+    button {
+        width: 12em;
+        height: 2em;
+        background-color: rgb(109, 169, 199);
+        border: none;
+        border-radius: .3em;
+        color: rgb(63, 63, 62);
+        font-weight: bolder;
+        font-size: 1em;
+        
+    }
+
+}

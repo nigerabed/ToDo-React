@@ -1,0 +1,8 @@
+@use "../Mixin/Mixin" as mix;
+@use "../Vars/Vars" as vars;
+header{
+  @include mix.flex($justify: center, $align: center, $direction: row);
+  h1{
+    color: vars.$h1-color;
+  }
+}
