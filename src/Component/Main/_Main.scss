@@ -1,19 +1,39 @@
 @use "../Mixin/Mixin" as m;
+@use "../Vars/Vars" as vars;
 
 main{
    
    
     @include m.flex($justify: center, $align: center, $direction: column);
     ul{
+       
       
         li{
+            background-color: vars.$list-bg-color;
+            width: 30em;
+            height: 2.5em;
+           padding: .5em;
+            @include m.flex($justify: space-around, $align: center, $direction: row);
+          
+            border: 1px solid black;
+            margin-top: .5em;
+            border-radius: .5em;
+
             list-style-type: none;
+            .todo-status{
+                text-decoration: line-through;
+               
+            }
           
             input{
                 width: 1em;
+                
+
+            }
+            .time-added{
+                display: block;
             }
         }
     }
    
 }
-

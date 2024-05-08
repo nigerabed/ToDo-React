@@ -1,6 +1,6 @@
 export default function Button(props) {
     return (
-        <button type="submit"  >{props.text}</button>
+        <button type={props.type} onClick={props.onClick} >{props.text}</button>
 
     )
 }
