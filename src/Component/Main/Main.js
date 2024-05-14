@@ -1,26 +1,19 @@
 import Button from "../Button/Button";
 import Form from "../Form/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Main() {
-    const [taskList, setTaskList] = useState([
-        // {
-        //     id: 1,
-        //     task: "aaaa",
-        //     done: false
-        // },
-        // {
-        //     id: 2,
-        //     task: "bbbbb",
-        //     done: true
-        // },
-        // {
-        //     id: 3,
-        //     task: "ccccc",
-        //     done: false
-        // }
+    const [taskList, setTaskList] = useState([]);
 
-    ]);
+    useEffect(() => {
+        setTaskList(JSON.parse(localStorage.getItem("taskList")) || [])
+    }, [])// tom array [] reload app component kun 1 gang
+
+    useEffect(() => {
+        if (taskList) {
+            localStorage.setItem("taskList", JSON.stringify(taskList));
+        }
+    }, [taskList])
 
     function addTask(taskInput) {
 
@@ -38,7 +31,9 @@ export default function Main() {
             date: getCurrentDateTime()
         };
 
-        setTaskList([...taskList, newTask]);
+        const array = [...taskList, newTask]
+        setTaskList(array);
+        // localStorage.setItem("taskList", JSON.stringify(array));
     }
 
     function getCurrentDateTime() {
@@ -61,6 +56,7 @@ export default function Main() {
         }
         )
         setTaskList(newTaskList);
+        // localStorage.setItem("taskList", JSON.stringify(newTaskList));
     };
 
     const handleDeleteAll = () => {
@@ -74,6 +70,7 @@ export default function Main() {
         }
         )
         setTaskList(newTaskList);
+        // localStorage.setItem("taskList", JSON.stringify(newTaskList));
     };
 
 
@@ -108,9 +105,9 @@ export default function Main() {
             </div>
             {/* <span className={(item.done) ?"todo-status": ""}>{item.task}</span> */}
             <div>
-            <button>Edit</button>
-            <Button className= "edit-delete-btn" onClick={() => handleDelete(item.id)} type="button" text="Delete" />
-            <span className="time-added">Time added: {item.date}</span>
+                <button>Edit</button>
+                <Button className="edit-delete-btn" onClick={() => handleDelete(item.id)} type="button" text="Delete" />
+                <span className="time-added">Time added: {item.date}</span>
 
             </div>
 
